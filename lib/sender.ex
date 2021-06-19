@@ -7,7 +7,7 @@ defmodule Sender do
 
   def notify_all(emails) do
     emails
-    |> Task.async_stream(&send_email/1, max_concurrency: 2)
+    |> Task.async_stream(&send_email/1, max_concurrency: 2, ordered: false)
     |> Enum.to_list()
   end
 end
